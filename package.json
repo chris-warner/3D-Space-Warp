@@ -2,10 +2,15 @@
   "name": "3D-Space-Warp",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "web": " cd dev && node ./chrome-launcher.js & cd ../ & node ./node_modules/live-server/live-server.js ./ --port=8080 --no-browser"
+  },
   "repository": "git@github.com:chris-warner/3D-Space-Warp.git",
   "author": "Christopher Warner <cwarner@concentrichx.com>",
   "license": "MIT",
   "dependencies": {
+    "live-server": "^1.2.1",
     "three.js": "^0.77.1"
   }
+
 }

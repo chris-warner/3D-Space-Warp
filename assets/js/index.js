@@ -1,6 +1,6 @@
 console.log('index.js loaded and ready');
 
-let scene, camera, renderer;
+let scene, camera, renderer, starGeo, stars;
 
 function init() {
     scene = new THREE.Scene();
@@ -12,6 +12,24 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
+    starGeo = new THREE.Geometry();
+    for(let i = 0; i <6000; i++) {
+       star = new THREE.Vector3(
+           Math.random() * 600 - 300,
+           Math.random() * 600 - 300,
+           Math.random() * 600 - 300
+       ); 
+       starGeo.vertices.push(star);
+    }
+       let sprite = new THREE.TextureLoader().load('assets/images/star.png');
+       let starMaterial = new THREE.PointsMaterial({ 
+           color: 0xaaaaaa,
+           size: 0.7,
+           map: sprite
+    });
+
+    stars = new THREE.Points(starGeo, starMaterial);
+    scene.add(stars);
     animate();
 }
 
